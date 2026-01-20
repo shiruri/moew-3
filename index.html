@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown for Loopi 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-light: #ffd6e7;
+            --pink-medium: #ff85b3;
+            --pink-dark: #ff5c8d;
+            --pink-deep: #ff2d6f;
+            --purple: #d8a7ff;
+            --white: #fff9fc;
+            --text: #5a3a4a;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--pink-light) 0%, #ffe6f2 50%, var(--purple) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Floating elements */
+        .float {
+            position: absolute;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .float-1 {
+            width: 100px;
+            height: 100px;
+            background: var(--pink-medium);
+            border-radius: 50%;
+            top: 10%;
+            left: 5%;
+            animation: floatUp 25s infinite ease-in-out;
+        }
+
+        .float-2 {
+            width: 70px;
+            height: 70px;
+            background: var(--purple);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 20%;
+            right: 8%;
+            animation: floatDown 20s infinite ease-in-out;
+        }
+
+        .float-3 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--pink-dark), var(--purple));
+            border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+            bottom: 15%;
+            left: 10%;
+            animation: floatUp 30s infinite ease-in-out reverse;
+        }
+
+        .float-4 {
+            width: 60px;
+            height: 60px;
+            background: var(--pink-deep);
+            border-radius: 50%;
+            bottom: 25%;
+            right: 12%;
+            animation: floatDown 22s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        @keyframes floatDown {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(30px) rotate(-180deg); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+        }
+
+        .logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            color: var(--pink-deep);
+            text-shadow: 3px 3px 0 var(--purple),
+                       6px 6px 0 rgba(255, 45, 111, 0.2);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            transform: rotate(-2deg);
+            display: inline-block;
+            background: white;
+            padding: 0 30px 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 45, 111, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--pink-dark);
+            margin-top: 10px;
+            font-weight: 500;
+            background: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(216, 167, 255, 0.3);
+        }
+
+        /* Main card */
+        .main-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 30px auto;
+            box-shadow: 0 20px 50px rgba(255, 45, 111, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 8px solid white;
+            max-width: 900px;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, var(--pink-light), var(--pink-medium), var(--purple), var(--pink-dark));
+            z-index: 2;
+        }
+
+        .card-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            color: var(--pink-deep);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--pink-medium), transparent);
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, var(--pink-light) 0%, #ffe6f2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 8px solid var(--pink-dark);
+            box-shadow: inset 0 0 20px rgba(255, 45, 111, 0.1);
+        }
+
+        .message {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--pink-deep);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: linear-gradient(135deg, var(--pink-medium) 0%, var(--pink-deep) 100%);
+            border-radius: 20px;
+            padding: 25px 15px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(255, 45, 111, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 45, 111, 0.4);
+        }
+
+        .countdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: white;
+        }
+
+        .countdown-value {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: white;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-label {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Secret area */
+        .secret-area {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            margin: 40px auto;
+            box-shadow: 0 15px 40px rgba(216, 167, 255, 0.25);
+            border: 5px dashed var(--purple);
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secret-area.locked .secret-content {
+            filter: blur(12px) brightness(0.9);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .secret-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2rem;
+            color: var(--pink-deep);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .lock-icon {
+            font-size: 2.5rem;
+        }
+
+        .secret-content {
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: all 0.8s ease;
+            background: linear-gradient(135deg, #fff9fc 0%, #fff0f7 100%);
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .placeholder {
+            font-size: 1.3rem;
+            color: var(--pink-dark);
+            opacity: 0.8;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .placeholder-image {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--pink-light), var(--purple));
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 45, 111, 0.3);
+        }
+
+        /* Unlock button */
+        .unlock-btn {
+            background: linear-gradient(135deg, var(--pink-medium) 0%, var(--pink-deep) 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            margin: 30px auto;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 45, 111, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unlock-btn:hover:not(:disabled) {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 45, 111, 0.5);
+        }
+
+        .unlock-btn:disabled {
+            background: linear-gradient(135deg, #cccccc 0%, #aaaaaa 100%);
+            cursor: not-allowed;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .unlock-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .unlock-btn:hover:not(:disabled)::after {
+            left: 100%;
+        }
+
+        .status {
+            font-size: 1.2rem;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 214, 231, 0.5);
+            margin-top: 20px;
+            color: var(--pink-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .status-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--pink-dark);
+            font-size: 1.1rem;
+            margin-top: 30px;
+            border-top: 3px solid rgba(255, 133, 179, 0.3);
+        }
+
+        .hearts {
+            font-size: 1.5rem;
+            color: var(--pink-deep);
+            margin: 10px 0;
+            letter-spacing: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; padding: 0 20px 5px; }
+            .card-title { font-size: 2.2rem; }
+            .countdown-item { width: 120px; padding: 20px 10px; }
+            .countdown-value { font-size: 3rem; }
+            .countdown-label { font-size: 1.1rem; }
+            .main-card, .secret-area { padding: 25px; }
+            .message { font-size: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 2.5rem; }
+            .countdown-container { gap: 15px; }
+            .countdown-item { width: 100px; }
+            .unlock-btn { padding: 15px 30px; font-size: 1.3rem; }
+            .float { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating background elements -->
+    <div class="float float-1"></div>
+    <div class="float float-2"></div>
+    <div class="float float-3"></div>
+    <div class="float float-4"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Loopi Countdown</div>
+            <div class="subtitle">Something special is waiting for you! ₍ᐢ-(ｪ)-ᐢ₎</div>
+        </div>
+
+        <!-- Main content card -->
+        <div class="main-card">
+            <h1 class="card-title">For Loopi ₍^ >⩊< ^₎Ⳋ</h1>
+            
+            <div class="message-box">
+                <p class="message">
+                    <span class="highlight">Loopy!</span> I made this little countdown 
+		cuz uhm barely got time to get something done because of school so made this in advanced mwueheh wait till
+                    <span class="highlight">February 1st</span> to see it! 
+                    The timer below will show exactly how much longer you have to wait. 
+                    Hope you like surprises! ✧｡٩(ˊᗜˋ )و✧*｡ though its just a small stuff that i did 
+                </p>
+            </div>
+
+            <!-- Countdown -->
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">DAYS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">HOURS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">MINUTES</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">SECONDS</div>
+                </div>
+            </div>
+
+            <!-- Secret area -->
+            <div class="secret-area locked" id="secretArea">
+                <h2 class="secret-title">
+                    <span class="lock-icon">(๑ᵔ⤙ᵔ๑)</span>
+                    Secret for Loopi
+                    <span class="lock-icon">ദ്ദി(ᵔᗜᵔ)</span>
+                </h2>
+                
+                <div class="secret-content" id="secretContent">
+                    <div class="placeholder-image">?</div>
+                    <p class="placeholder">
+                        There's a special surprise hidden here just for you, Loopi! 
+                        But patience is a virtue – you'll have to wait until the countdown hits zero.
+                    </p>
+                    <p class="placeholder">
+                        On February 1st, this lock will open and you'll see what's inside!
+                    </p>
+                </div>
+
+                <button class="unlock-btn" id="unlockBtn" disabled>
+                    ദ്ദി/ᐠ｡‸｡ᐟ\ Locked Until Feb 1
+                </button>
+                
+                <div class="status" id="status">
+                    <span class="status-icon">૮꒰˶ᵔ ᗜ ᵔ˶꒱ა</span>
+                    <span id="statusText">Countdown is running... be patient!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="hearts">ʕ •ɷ•ʔฅ ʕ •ɷ•ʔฅ ʕ •ɷ•ʔฅ</div>
+            <p>Sparkles for loopii⸜(｡˃ ᵕ ˂ )⸝♡</p>
+            <p>Timer updates every second • Page refreshes automatically</p>
+        </div>
+    </div>
+
+    <script>
+        // Set target date to February 1st (adjust year automatically)
+        function getTargetDate() {
+            const now = new Date();
+            let targetYear = now.getFullYear();
+            const targetDate = new Date(targetYear, 1, 1); // February 1 (month is 0-indexed)
+            
+            // If we're already past Feb 1 this year, target next year
+            if (now > targetDate) {
+                targetYear++;
+                return new Date(targetYear, 1, 1);
+            }
+            return targetDate;
+        }
+
+        const targetDate = getTargetDate();
+        const unlockBtn = document.getElementById('unlockBtn');
+        const secretArea = document.getElementById('secretArea');
+        const statusText = document.getElementById('statusText');
+        
+        // Stock images for when unlocked (pink themed)
+        const stockImages = [
+            'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Pink flowers
+            'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80', // Pink balloons
+            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Portrait
+            'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'  // Pink gradient
+        ];
+
+        // Select a random stock image for the unlock
+        const selectedImage = stockImages[Math.floor(Math.random() * stockImages.length)];
+
+        // Update countdown every second
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            // If countdown finished
+            if (timeLeft <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                
+                // Enable unlock button
+                unlockBtn.disabled = false;
+                unlockBtn.textContent = '≽ ^⎚ ˕ ⎚^ ≼ Click to Unlock!';
+                unlockBtn.onclick = unlockSecret;
+                statusText.textContent = "Time's up! Click the button to reveal the surprise!";
+                
+                // Flash animation
+                secretArea.style.animation = 'none';
+                setTimeout(() => {
+                    secretArea.style.animation = 'pulse 1.5s infinite alternate';
+                }, 10);
+                
+                return;
+            }
+
+            // Calculate time units
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Update display
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            // Update status message
+            if (days === 0 && hours < 24) {
+                statusText.textContent = `Less than a day to go! Getting excited?`;
+            } else if (days === 1) {
+                statusText.textContent = `Only 1 day left! Almost there!`;
+            } else if (days < 7) {
+                statusText.textContent = `${days} days to go! The wait is almost over!`;
+            } else {
+                statusText.textContent = `${days} days, ${hours} hours until unlock. Patience!`;
+            }
+        }
+
+        // Unlock the secret
+        function unlockSecret() {
+            // Remove locked class to unblur
+            secretArea.classList.remove('locked');
+            
+            // Update button
+            unlockBtn.textContent = '₍₍⚞(˶>ᗜ<˶)⚟⁾⁾ Unlocked!';
+            unlockBtn.disabled = true;
+            unlockBtn.style.background = 'linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%)';
+            
+            // Update status
+            statusText.innerHTML = '<span class="status-icon">₍ᐢ•ﻌ•ᐢ₎</span> Surprise revealed just for you, Loopi!';
+            document.querySelector('.status').style.background = 'rgba(76, 217, 100, 0.2)';
+            
+            // Show the surprise content
+            const secretContent = document.getElementById('secretContent');
+            secretContent.innerHTML = `
+                <div style="width: 100%; max-width: 500px; margin: 0 auto;">
+                    <img src="${selectedImage}" alt="Surprise for Loopi!" style="width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(255, 45, 111, 0.3);">
+                    <div style="margin-top: 25px; padding: 20px; background: white; border-radius: 15px; border: 3px solid var(--pink-medium);">
+                        <h3 style="color: var(--pink-deep); font-family: 'Fredoka One', cursive; font-size: 1.8rem; margin-bottom: 10px;">For Loopi! 🎀</h3>
+                        <p style="color: var(--text); font-size: 1.3rem; line-height: 1.6;">
+                        </p>
+                        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                            <span style="font-size: 2rem;">(๑'ᵕ'๑)⸝*</span>
+                            <span style="font-size: 2rem;">𐔌՞ ܸ.ˬ.ܸ՞𐦯</span>
+                            <span style="font-size: 2rem;">(˶˃ ᵕ ˂˶) .ᐟ.ᐟ</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add floating hearts animation
+            createFloatingHearts();
+        }
+
+        // Create floating hearts animation
+        function createFloatingHearts() {
+            const hearts = ['(๑'ᵕ'๑)⸝*', 'ᕙ(  •̀ ᗜ •́  )ᕗ', '(づ> v <)づ♡', '(*´▽`*)', '( ദ്ദി ˙ᗜ˙ )'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.position = 'fixed';
+                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.zIndex = '9999';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.opacity = '0.8';
+                    heart.style.animation = `floatUpHeart ${Math.random() * 3 + 3}s ease-in forwards`;
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 200);
+            }
+            
+            // Add CSS for heart animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatUpHeart {
+                    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+                    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialize
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Add some interactive sparkles on click
+        document.addEventListener('click', function(e) {
+            if (Math.random() > 0.7) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = '~';
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.fontSize = '20px';
+                sparkle.style.zIndex = '10000';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.animation = 'sparkleFade 1s forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+                
+                // Add sparkle animation
+                if (!document.querySelector('#sparkle-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'sparkle-style';
+                    style.textContent = `
+                        @keyframes sparkleFade {
+                            0% { opacity: 1; transform: scale(1); }
+                            100% { opacity: 0; transform: scale(0) rotate(180deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
