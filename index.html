@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown for Loopi 💖</title>
+    <title>Countdown for Loopi :3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Fredoka+One&display=swap" rel="stylesheet">
@@ -444,7 +444,7 @@
             <div class="message-box">
                 <p class="message">
                     <span class="highlight">Loopy!</span> I made this little countdown 
-		cuz uhm barely got time to get something done because of school so made this in advanced mwueheh wait till
+                    cuz uhm barely got time to get something done because of school so made this in advanced mwueheh wait till
                     <span class="highlight">February 1st</span> to see it! 
                     The timer below will show exactly how much longer you have to wait. 
                     Hope you like surprises! ✧｡٩(ˊᗜˋ )و✧*｡ though its just a small stuff that i did 
@@ -529,16 +529,8 @@
         const secretArea = document.getElementById('secretArea');
         const statusText = document.getElementById('statusText');
         
-        // Stock images for when unlocked (pink themed)
-        const stockImages = [
-            'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Pink flowers
-            'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80', // Pink balloons
-            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Portrait
-            'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'  // Pink gradient
-        ];
-
-        // Select a random stock image for the unlock
-        const selectedImage = stockImages[Math.floor(Math.random() * stockImages.length)];
+        // Google Drive file URL (direct preview link)
+        const googleDriveFile = 'https://drive.google.com/file/d/1DjN-fOn8uHKyFeZiPPTXD5LJucIyme0f/view?usp=drive_link';
 
         // Update countdown every second
         function updateCountdown() {
@@ -581,13 +573,13 @@
 
             // Update status message
             if (days === 0 && hours < 24) {
-                statusText.textContent = `Less than a day to go! Getting excited?`;
+                statusText.textContent = `Less than a day to go! Getting excited? (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧`;
             } else if (days === 1) {
-                statusText.textContent = `Only 1 day left! Almost there!`;
+                statusText.textContent = `Only 1 day left! Almost there! (๑˃ᴗ˂)ﻭ`;
             } else if (days < 7) {
-                statusText.textContent = `${days} days to go! The wait is almost over!`;
+                statusText.textContent = `${days} days to go! The wait is almost over! ૮ ˶ᵔ ᵕ ᵔ˶ ა`;
             } else {
-                statusText.textContent = `${days} days, ${hours} hours until unlock. Patience!`;
+                statusText.textContent = `${days} days, ${hours} hours until unlock. Patience! ( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )`;
             }
         }
 
@@ -602,66 +594,65 @@
             unlockBtn.style.background = 'linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%)';
             
             // Update status
-            statusText.innerHTML = '<span class="status-icon">₍ᐢ•ﻌ•ᐢ₎</span> Surprise revealed just for you, Loopi!';
+            statusText.innerHTML = '<span class="status-icon">₍ᐢ•ﻌ•ᐢ₎</span> Surprise revealed just for you, Loopi! (っ˘з(˘⌣˘ ) ♡';
             document.querySelector('.status').style.background = 'rgba(76, 217, 100, 0.2)';
             
-            // Show the surprise content
+            // Show the Google Drive file securely embedded
             const secretContent = document.getElementById('secretContent');
             secretContent.innerHTML = `
-                <div style="width: 100%; max-width: 500px; margin: 0 auto;">
-                    <img src="${selectedImage}" alt="Surprise for Loopi!" style="width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(255, 45, 111, 0.3);">
-                    <div style="margin-top: 25px; padding: 20px; background: white; border-radius: 15px; border: 3px solid var(--pink-medium);">
-                        <h3 style="color: var(--pink-deep); font-family: 'Fredoka One', cursive; font-size: 1.8rem; margin-bottom: 10px;">For Loopi! 🎀</h3>
-                        <p style="color: var(--text); font-size: 1.3rem; line-height: 1.6;">
+                <div style="width: 100%; max-width: 700px; margin: 0 auto; text-align: center;">
+                    <div style="background: linear-gradient(135deg, var(--pink-light), var(--purple)); padding: 20px; border-radius: 20px; margin-bottom: 20px; border: 5px solid var(--pink-dark);">
+                        <h3 style="color: var(--pink-deep); font-family: 'Fredoka One', cursive; font-size: 2rem; margin-bottom: 15px;">
+                            ༼ つ ◕_◕ ༽つ For Loopi! ༼ つ ◕_◕ ༽つ
+                        </h3>
+                        <p style="color: var(--text); font-size: 1.3rem; margin-bottom: 20px;">
+                            Here's the special thing I made for you! (⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) 
                         </p>
-                        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                    </div>
+                    
+                    <!-- Secure Google Drive Embed -->
+                    <div style="position: relative; width: 100%; padding-bottom: 75%; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(255, 45, 111, 0.3);">
+                        <iframe 
+                            src="${googleDriveFile}" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                            frameborder="0"
+                            allow="autoplay; fullscreen"
+                            allowfullscreen
+                            title="Special Surprise for Loopi">
+                        </iframe>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 20px; background: white; border-radius: 15px; border: 3px solid var(--pink-medium);">
+                        <h4 style="color: var(--pink-deep); font-family: 'Fredoka One', cursive; font-size: 1.5rem; margin-bottom: 10px;">
+                            ૮₍ ˃ ⤙ ˂ ₎ა Note from me:
+                        </h4>
+                        <p style="color: var(--text); font-size: 1.2rem; line-height: 1.6;">
+                            Hope you like it! This was made specially for you Loopi! 
+                            And Happy Happy Birthtday to youuu (´,,•ω•,,)♡ 
+                            Instruction: Just download the zip and extract itt ! and play the exe file :3
+                        </p>
+                        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
                             <span style="font-size: 2rem;">(๑'ᵕ'๑)⸝*</span>
-                            <span style="font-size: 2rem;">𐔌՞ ܸ.ˬ.ܸ՞𐦯</span>
-                            <span style="font-size: 2rem;">(˶˃ ᵕ ˂˶) .ᐟ.ᐟ</span>
+                            <span style="font-size: 2rem;">( ˶ˆᗜˆ˵ )</span>
+                            <span style="font-size: 2rem;">૮ ˶ᵔ ᵕ ᵔ˶ ა</span>
+                            <span style="font-size: 2rem;">(っ˘з(˘⌣˘ ) ♡</span>
+                            <span style="font-size: 2rem;">₍˄·͈༝·͈˄*₎◞ ̑̑</span>
                         </div>
+                    </div>
+                    
+                    <!-- Download link as backup -->
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(255, 214, 231, 0.5); border-radius: 15px;">
+                        <p style="color: var(--pink-dark); margin-bottom: 10px;">
+                            (๑•́ ₃ •̀๑) If the preview doesn't work, you can also:
+                        </p>
+                        <a href="https://drive.google.com/file/d/1DjN-fOn8uHKyFeZiPPTXD5LJucIyme0f/view?usp=drive_link" 
+                           target="_blank" 
+                           style="display: inline-block; background: var(--pink-deep); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s; box-shadow: 0 5px 15px rgba(255, 45, 111, 0.3);">
+                            ˗ˏˋ ♡ ˎˊ˗ Open in Google Drive ˗ˏˋ ♡ ˎˊ˗
+                        </a>
                     </div>
                 </div>
             `;
-            
-            // Add floating hearts animation
-            createFloatingHearts();
-        }
-
-        // Create floating hearts animation
-        function createFloatingHearts() {
-            const hearts = ['(๑'ᵕ'๑)⸝*', 'ᕙ(  •̀ ᗜ •́  )ᕗ', '(づ> v <)づ♡', '(*´▽`*)', '( ദ്ദി ˙ᗜ˙ )'];
-            
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                    heart.style.position = 'fixed';
-                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.top = '100vh';
-                    heart.style.zIndex = '9999';
-                    heart.style.pointerEvents = 'none';
-                    heart.style.opacity = '0.8';
-                    heart.style.animation = `floatUpHeart ${Math.random() * 3 + 3}s ease-in forwards`;
-                    
-                    document.body.appendChild(heart);
-                    
-                    // Remove heart after animation
-                    setTimeout(() => {
-                        heart.remove();
-                    }, 4000);
-                }, i * 200);
-            }
-            
-            // Add CSS for heart animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes floatUpHeart {
-                    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-                    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
         }
 
         // Initialize
@@ -672,11 +663,13 @@
         document.addEventListener('click', function(e) {
             if (Math.random() > 0.7) {
                 const sparkle = document.createElement('div');
-                sparkle.textContent = '~';
+                const sparkles = ['✧', '⋆', '⁺', '✩', '✦', '⊹', '⋆⁺'];
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
                 sparkle.style.position = 'fixed';
                 sparkle.style.left = e.clientX + 'px';
                 sparkle.style.top = e.clientY + 'px';
-                sparkle.style.fontSize = '20px';
+                sparkle.style.fontSize = '24px';
+                sparkle.style.color = '#ff5c8d';
                 sparkle.style.zIndex = '10000';
                 sparkle.style.pointerEvents = 'none';
                 sparkle.style.animation = 'sparkleFade 1s forwards';
@@ -693,14 +686,15 @@
                     style.id = 'sparkle-style';
                     style.textContent = `
                         @keyframes sparkleFade {
-                            0% { opacity: 1; transform: scale(1); }
-                            100% { opacity: 0; transform: scale(0) rotate(180deg); }
+                            0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+                            100% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(180deg); }
                         }
                     `;
                     document.head.appendChild(style);
                 }
             }
         });
+    
     </script>
 </body>
 </html>
